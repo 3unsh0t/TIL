@@ -1,9 +1,9 @@
 <h1>java에서 스택 사용하는법</h1>
 <h3>Stack 선언</h3>
 <ul>
-import java.util.Stack; //import
-Stack<Integer> stack = new Stack<>(); //int형 스택 선언
-Stack<String> stack = new Stack<>(); //char형 스택 선언
+import java.util.Stack; //import <br>
+Stack<Integer> stack = new Stack<>(); //int형 스택 선언 <br>
+Stack<String> stack = new Stack<>(); //char형 스택 선언 <br>
 </ul>
 <h3>Stack 값 추가</h3>
 <ul>
