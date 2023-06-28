@@ -1,0 +1,23 @@
+class Solution {
+    public int semiOrderedPermutation(int[] nums) {
+        // semi order 정렬
+        // 버블정렬 비슷. 근데 첫번째 요소가 1이고, 마지막 요소가 n이면 준정렬.
+
+        int count = 0;
+
+        int min_i = findIndex(1,nums);
+        int max_i = findIndex(nums.length, nums);
+
+        count += min_i; 
+        count += (nums.length - max_i - 1);
+        if(min_i > max_i) count -= 1;
+        return count;
+    }
+  // 문자열로 하다가 귀찮아서 걍 배열로 함수 만듬..
+    public static int findIndex(int a, int[] nums){
+        for(int i = 0; i<nums.length; i++){
+            if(nums[i]==a) return i;
+        }
+        return -1;
+    }
+}
