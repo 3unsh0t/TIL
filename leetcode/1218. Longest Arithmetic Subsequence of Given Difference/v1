@@ -1,0 +1,34 @@
+class Solution {
+    public int longestSubsequence(int[] arr, int difference) {
+        // 그 컴퓨터 카드게임같다
+
+
+        ArrayList<LinkedList> list = new ArrayList<>();
+        LinkedList<Integer> tmp = new LinkedList<Integer>();
+        tmp.add(arr[0]);
+        list.add(tmp);
+
+        for(int i = 1; i<arr.length; i++){
+            boolean is_it = false;
+            for(LinkedList<Integer> item : list){
+                Integer last = item.getLast();
+                if(arr[i]-difference == last){
+                    item.add(arr[i]);
+                    is_it = true;
+                }
+            }
+            if(!(is_it)){
+                LinkedList<Integer> isnot = new LinkedList<Integer>();
+                isnot.add(arr[i]);
+                list.add(isnot);
+            }
+        }
+        int result = 0;
+        for(LinkedList item: list){
+            if(result<item.size()){
+                result = item.size();
+            }
+        }
+        return result;
+    }
+}
