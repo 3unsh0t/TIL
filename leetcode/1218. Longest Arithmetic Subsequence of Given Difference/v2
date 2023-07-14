@@ -1,0 +1,36 @@
+       // 그 컴퓨터 카드게임같다
+
+        /* <<최적화>>
+        어떻게 하지..
+        어차피 %difference 하면, 다 똑같은 수열 나오니까
+        만든거 재사용??
+
+        - 연결리스트 사용 => 마지막 값만 저장해둬도 되므로 그냥 Integer 사용
+        - 해시맵 사용 (key=수열 마지막 값, value= 수열 길이)
+        - dp 사용=> 마지막값만 저장해서 있는지 비교 후, dp에 값 저장(있으면 이전 수열 길이+1, 없으면 길이 1)
+        */
+
+/*
+-- 해시맵 사용법 익히기
+-- 해시맵 메소드중 containsKey(key) 익히기
+-- dp 익히기
+*/
+
+class Solution {
+    public int longestSubsequence(int[] arr, int difference) {
+        int n = arr.length;
+        Map<Integer,Integer> dp = new HashMap<>();
+        int result = 1;
+        for(int i = 0; i<n; i++){
+            int num = arr[i];
+            if(dp.containsKey(num-difference)){
+                dp.put(num,dp.get(num-difference)+1);
+            } else {
+                dp.put(num,1);
+            }
+            result = Math.max(result, dp.get(num));
+        }
+        return result;
+    }
+
+}
