@@ -1,0 +1,17 @@
+// 비트 연산자 사용!!
+class Solution {
+    public int minBitFlips(int start, int goal) {
+        int a = (start ^ goal);  //XOR 비트 연산자. 0 0-> 0/ 0 1 -> 1
+        int count = 0;
+        
+        while(a != 0) {
+            if((a & 1) == 1) {  // 가장 마지막 비트가 1이면 count++
+                count++;
+            }
+            
+            a = a >> 1; // 오른쪽으로 한비트씩 shift 하면서 검사
+        }
+        
+        return count;
+    }
+}
