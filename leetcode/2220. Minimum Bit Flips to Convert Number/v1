@@ -1,0 +1,50 @@
+class Solution {
+    public int minBitFlips(int start, int goal) {
+        String s = int2bit(start);
+        String g = int2bit(goal);
+
+        String big = s.length()<g.length()? g: s;
+
+        int index = 0;
+        int result = 0;
+        while(index< big.length()){
+            char ss, gg;
+            if(s.length() <= index){
+                ss = '0';
+            }else{
+                ss = s.charAt(index);
+            }
+            if(g.length() <= index){
+                gg = '0';
+            }else{
+                gg = g.charAt(index);
+            }
+
+            if(ss!=gg)
+                result++;
+            index++;
+        }
+        return result;
+        
+    }
+    public String int2bit(int a){
+        StringBuilder sb = new StringBuilder();
+        
+        while(a>1){
+            if(a%2 == 0)
+                sb.append("0");
+            else
+                sb.append("1");
+            a/=2;
+        }
+        if(a==0){
+            sb.append("0");
+        }
+        else{
+            sb.append("1");
+        }
+        String str = sb.toString();
+
+        return str;
+    }
+}
